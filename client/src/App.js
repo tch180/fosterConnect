@@ -13,6 +13,8 @@ import HomeRating from "./pages/HomeRating";
 import Mentors from "./pages/Mentors";
 import AboutUs from "./pages/AboutUs";
 import AdminPanel from "./pages/AdminPanel";
+import  Login  from "./components/login";
+import SignUp from "./components/signUp";
 
 
 function App() {
@@ -29,6 +31,9 @@ function App() {
           <Route exact path='/mentors' component={Mentors}/>
           <Route exact path='/About' component={AboutUs}/>
           <Route exact path='/Admin' component={AdminPanel}/> 
+          <Route exact path='/login' component={Login}/>
+          <Route exact path='/signup' component={SignUp}/>
+
 
 
         </Switch>

@@ -2,27 +2,29 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer class="footer mt-2  fixed-bottom">
-      <div class="container">
-        <ul class="nav  justify-content-center">
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="/About">
+    <footer className="footer mt-5  fixed-bottom">
+      <div className="container">
+        <ul className="nav  justify-content-center">
+          <li className="nav-item">
+            <a className="nav-link " aria-current="page" href="/About">
               About us{" "}
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li className="nav-item">
+            <a className="nav-link" href="#">
               Resources
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li className="nav-item">
+            <a className="nav-link" href="#">
               Careers
             </a>
           </li>
+          <li className="nav-item" style={{color:'teal',fontSize:'12px'}}><span>&copy; tch180</span></li>
         </ul>
+        
       </div>
-      <span style={{color:'teal'}}>&copy; tch180</span>
+      
     </footer>
   );
 }
