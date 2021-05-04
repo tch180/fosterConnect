@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+import AuthState from './context/Auth/AuthState'
 
 import Navbar from '../src/layout/NavBar'
 import Footer from "./layout/Footer";
@@ -17,20 +18,28 @@ import  Login  from "./components/login";
 import SignUp from "./components/signUp";
 
 
+import setAuthToken from "./utils/SetAuthToken";
+import PrivateRoute from './routing/PrivateRoute';
+
+
 function App() {
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
 
   return (
-    <Router>
+    <AuthState>
+        <Router>
       <Fragment>
         <Navbar/>
         <div className="App">
         <Switch>
           <Route exact path="/" component={LandingPage}/>
-          <Route exact path='/profile' component={ProfilePage}/>
-          <Route exact path='/homerating' component={HomeRating}/>
-          <Route exact path='/mentors' component={Mentors}/>
+          <PrivateRoute exact path='/profile' component={ProfilePage}/>
+          <PrivateRoute exact path='/homerating' component={HomeRating}/>
+          <PrivateRoute exact path='/mentors' component={Mentors}/>
           <Route exact path='/About' component={AboutUs}/>
-          <Route exact path='/Admin' component={AdminPanel}/> 
+          <PrivateRoute exact path='/Admin' component={AdminPanel}/> 
           <Route exact path='/login' component={Login}/>
           <Route exact path='/signup' component={SignUp}/>
 
@@ -41,6 +50,8 @@ function App() {
       <Footer/>
       </Fragment>
     </Router>
+    </AuthState>
+  
 
 
     

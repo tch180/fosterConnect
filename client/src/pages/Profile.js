@@ -1,6 +1,5 @@
 import React from 'react'
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
+
 import signUp from '../components/signUp';
 
 
@@ -8,7 +7,7 @@ function Profile() {
     return (
         <div style={{color:'teal'}}>
             
-            <div style={{ width: "180px;" }} id="sidebar">
+            <div style={{ width: "180px" }} id="sidebar">
       <div
         className="d-flex flex-column p-3 text-white bg-dark"
         style={{ height: "100%" }}
