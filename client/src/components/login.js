@@ -10,7 +10,7 @@ const login = () => {
                 margin: 'auto'
             }}>
                 <img class="mb-4" src={logo} alt="" width="94" height="94"/>
-                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                <h1 class="h3 mb-3 fw-normal text-light">Please sign in</h1>
 
                 <div class="form-floating">
                     <input

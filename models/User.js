@@ -1,10 +1,11 @@
 const mongoose = require('mongoose')
 
 const UserSchema = mongoose.Schema({
-name: {
-    type: String,
-    required:true, 
-    unique: true,
+firstName: {
+    type: String,  
+}, 
+lastName: {
+    type: String,       
 }, 
 email: {
     type: String, 
@@ -23,7 +24,8 @@ date: {
 role: {
     type: String, 
     enum:['admin', 'restricted', 'mentor', 'mod', 'user'],
-    required: true
+    default:'user'
+    
     },
 
 })
