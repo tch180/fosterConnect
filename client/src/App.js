@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import AuthState from "./context/Auth/AuthState";
-import AlertState from "./context/Auth/AuthState";
+import AlertState from "./context/alert/AlertState";
 
 import Navbar from "../src/layout/NavBar";
 import Footer from "./layout/Footer";
@@ -21,7 +21,7 @@ import  Alerts  from "./components/Alerts";
 import setAuthToken from "./utils/SetAuthToken";
 import PrivateRoute from "./routing/PrivateRoute";
 
-const App = () => {
+function App() {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
