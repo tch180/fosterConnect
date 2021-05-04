@@ -5,6 +5,10 @@ const PostSchema = mongoose.Schema({
         type: String, 
         required: true,
     }, 
+    postText:{
+        type: String,
+        required: true
+    },
     postLikes: {
         type: Number, 
     }, 
@@ -13,7 +17,7 @@ const PostSchema = mongoose.Schema({
     },
     postPoster:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'user'
     } 
 })
 module.exports = mongoose.model('post', PostSchema)
