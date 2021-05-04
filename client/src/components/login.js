@@ -1,9 +1,12 @@
 import React, { useState, useContext, useEffect, Fragment } from "react";
 import AuthContext from "../context/Auth/authContext"
+import AlertContext from '../context/alert/alertContext'
 import logo from '../assets/Foster ConnectLOGO.png'
 
 function Login(props){
     const authContext = useContext(AuthContext); 
+    const alertContext = useContext(AlertContext);
+    const { setAlert } = alertContext;
 
     const { login, error, clearErrors, isAuthenticated} = authContext
 
@@ -12,11 +15,11 @@ function Login(props){
             props.history.push("/profile");
         }
         if (error === 'Invalid Creds'){
-            alert('Incorrect please try again')
+            setAlert(error, 'danger');
             clearErrors();
         }
-    },[error,isAuthenticated,props.history, clearErrors])
-
+            // eslint-disable-next-line
+    },[error,isAuthenticated,props.history])
     const [user,setUser] = useState({
         email:'',
         password:'',
@@ -29,7 +32,7 @@ function Login(props){
     const onSubmit = (e)=>{
         e.preventDefault(); 
         if (email==="" || password === ""){
-            alert(" please enter email and password ")
+            setAlert('Please fill in all fields', 'danger');
         } else {
             login({email,password});
             console.log('user logged in');
