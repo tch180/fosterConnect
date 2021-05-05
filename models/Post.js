@@ -15,7 +15,7 @@ const PostSchema = mongoose.Schema({
     postComments: { 
         type: String, 
     },
-    postPoster:{
+    user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     } 
