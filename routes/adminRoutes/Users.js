@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router();
+const auth = require('../../middleware/auth')
 const Users = require('../../models/User'); 
+const roleCheck = require('./adminCheck')
+
 
 
 
@@ -9,7 +12,7 @@ const Users = require('../../models/User');
 //@desc Get all the users in the DB
 //ACCESS PRIVATE: 
 
-router.get('/', async(req,res)=>{
+router.get('/', auth, async(req,res)=>{
     console.log('getting the users')
     try {
        const getAllUsers = await Users.find({user: req.user})

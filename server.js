@@ -28,6 +28,7 @@ app.use('/api/users', require('./routes/users'))
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/admin/users', require('./routes/adminRoutes/Users'))
 app.use('/api/admin/post', require('./routes/adminRoutes/Posts'))
+// app.use('/api/admin/checkRole', require('./routes/adminRoutes/adminCheck'))
 
 app.use('/api/posts', require('./routes/posts'))
 
