@@ -14,8 +14,7 @@ module.exports = function (req, res, next) {
   try {
     const decoded = jwt.verify(token, config.get('jwtSecret'));
      req.user = decoded.user;
-     console.log(decoded,'decoded')
-     console.log(req.user)
+   
     next()
   } catch (error) {
     res.status(401).json({ msg: 'token is not valid, AuthJS MIDDLEWARE' });

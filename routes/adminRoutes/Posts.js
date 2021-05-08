@@ -1,31 +1,15 @@
 const express = require("express");
 const User = require("../../models/User");
-
 const auth = require("../../middleware/auth");
 const adminCheck = require('./adminCheck')
 const router = express.Router();
 const Post = require("../../models/Post");
 
-// const adminCheck = async  (req, res,) => {
-//     console.log('TESTING TESTING TESTINg ') 
-//   try {
-//       console.log(req.user.id)
-//      const user = await User.findById(req.user.id).select("role");
-//     console.log(user, "user console");
-//     if (user.role != "admin") {
-//       return res.status(401).json({ msg: "NOT AUTHORIZED" });
-//     }
-//   } catch (error) {
-//     console.error(error.message);
-//   }
-// };
 
 // Admin Route to get all post
 //@desc Get all the post
 // ACCESS PRIVATE:
 router.get("/",auth,adminCheck, async (req, res) => {
-    
-    
     console.log('success')
   try {
     
@@ -34,12 +18,12 @@ router.get("/",auth,adminCheck, async (req, res) => {
     res.json(getAllPost);
   } catch (error) {
     console.error(error.message);
-    //res.status(500).send("server error in admin post routes");
+    res.status(500).send("server error in admin post routes");
   }
 });
 
 //Admin route to get ONE POST BY ID
-router.get("/:id", async (req, res) => {
+router.get("/:id", auth,adminCheck,async (req, res) => {
   console.log("getting one post by id");
   try {
     let getOnePostById = await Post.findById(req.params.id);
@@ -53,7 +37,7 @@ router.get("/:id", async (req, res) => {
 
 //Admin route to delete post by ID
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",auth,adminCheck, async (req, res) => {
   console.log("about to delete this post");
   try {
     await Post.findByIdAndDelete(req.params.id);
