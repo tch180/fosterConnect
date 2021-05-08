@@ -1,7 +1,71 @@
-import React, {useState} from "react";
+import React, {useContext,Fragment} from "react";
 import logo from '../assets/Foster ConnectLOGO.png'
+import AuthContext from '../context/Auth/authContext'
+function NavBar(props) {
+  const authContext = useContext(AuthContext)
+  const {isAuthenticated,logout,user} = authContext
 
-function NavBar() {
+const onLogout = ()=>{
+  logout(); 
+  console.log('user is logged out')
+  props.push('/')
+}
+
+  const authorizedLinks = (
+    <Fragment>
+      <li className="nav-item">
+        <a className="nav-link" href="/profile">
+          Profile
+        </a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/mentors">
+          Mentoring
+        </a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/homerating">
+          Home Rating
+        </a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/Admin">
+          AdminPanel
+        </a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="#!" onClick={onLogout}>
+          Logout
+        </a>
+      </li>
+    </Fragment>
+  );
+
+  const notAuthorizedLinks = (
+    <Fragment>
+      <li className="nav-item">
+        <a className="nav-link" href="/login">
+          Login
+        </a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/signup">
+          Signup
+        </a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/About">
+          About Us 
+        </a>
+      </li>
+    </Fragment>
+  );
+
+
+
+
+
+
 
   return (
     <div style={{
@@ -25,7 +89,7 @@ function NavBar() {
             height="24"
             className="d-inline-block align-text-top"></img>
           </a>
-          {/* <img src={logo} style={{height:'15rem', width:'15rem'}} className="img-fluid" alt="fosterConnect Logo"/> */}
+
           <button
             className="navbar-toggler"
             type="button"
@@ -41,24 +105,9 @@ function NavBar() {
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="/">Home</a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/profile">Profile</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/homerating">Home Rating</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/mentors">Mentoring</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/Admin">AdminPanel</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/login">Login</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/signup">Signup</a>
-              </li>
+              {isAuthenticated ? authorizedLinks : notAuthorizedLinks}
+             
+            
             </ul>
             <span className="navbar-text">
               Making Connections that Matter

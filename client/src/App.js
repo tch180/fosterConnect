@@ -39,8 +39,8 @@ function App() {
                 <PrivateRoute exact path="/profile" component={ProfilePage} />
                 <PrivateRoute exact path="/homerating" component={HomeRating} />
                 <PrivateRoute exact path="/mentors" component={Mentors} />
-                <Route exact path="/About" component={AboutUs} />
                 <PrivateRoute exact path="/Admin" component={AdminPanel} />
+                <Route exact path="/About" component={AboutUs} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={SignUp} />
               </Switch>
