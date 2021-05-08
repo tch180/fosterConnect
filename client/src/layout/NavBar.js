@@ -1,9 +1,9 @@
-import React, {useContext,Fragment} from "react";
+import React, {useContext,Fragment,useEffect} from "react";
 import logo from '../assets/Foster ConnectLOGO.png'
 import AuthContext from '../context/Auth/authContext'
 function NavBar(props) {
   const authContext = useContext(AuthContext)
-  const {isAuthenticated,logout,user} = authContext
+  const {isAuthenticated,logout} = authContext
 
 const onLogout = ()=>{
   logout(); 
@@ -11,6 +11,11 @@ const onLogout = ()=>{
   props.push('/')
 }
 
+
+useEffect(()=>{
+  authContext.loadUser();
+ //eslint-disable-next-line
+},[])
   const authorizedLinks = (
     <Fragment>
       <li className="nav-item">
