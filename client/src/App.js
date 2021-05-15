@@ -17,6 +17,7 @@ import AdminPanel from "./pages/AdminPanel";
 import Login from "./components/login";
 import SignUp from "./components/signUp";
 import  Alerts  from "./components/Alerts";
+import AdminLogin from './components/AdminLogin'
 
 import setAuthToken from "./utils/SetAuthToken";
 import PrivateRoute from "./routing/PrivateRoute";
@@ -43,7 +44,7 @@ function App() {
                 <PrivateRoute exact path="/profile" component={ProfilePage} />
                 <PrivateRoute exact path="/homerating" component={HomeRating} />
                 <PrivateRoute exact path="/mentors" component={Mentors} />
-                <AdminRoute exact path="/Admin" component={Login} />
+                <AdminRoute exact path="/Admin" component={AdminLogin} />
                 <AdminRoute exact path="/AdminView" component={AdminPanel} />
                 <Route exact path="/About" component={AboutUs} />
                 <Route exact path="/login" component={Login} />

@@ -1,9 +1,25 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import AuthContext from "../context/Auth/authContext";
 
-function AdminPanel() {
+ 
+
+function AdminPanel(props) {
+  const authContext = useContext(AuthContext);
+  const { user, logout } = authContext;
+
+  useEffect(() => {
+    authContext.loadUser();
+    //eslint-disable-next-line
+  }, []);
+
+  const onLogout = () => {
+    logout();
+    console.log("user is logged out");
+    props.push("/");
+  };
   return (
-    <div style={{ width: "180px;" }} id="sidebar">
+    <div style={{ width: "8vw" }} id="sidebar">
       <div
         className="d-flex flex-column p-3 text-white bg-dark"
         style={{ height: "100%" }}
@@ -58,7 +74,7 @@ function AdminPanel() {
               height="62"
               className="rounded-circle me-2"
             />
-            <strong>mdo</strong>
+             <strong>{user && user.firstName}</strong>
           </a>
           <ul
             className="dropdown-menu dropdown-menu-dark text-small shadow"
@@ -83,7 +99,7 @@ function AdminPanel() {
               <hr className="dropdown-divider" />
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="#!" onClick={onLogout}>
                 Sign out
               </a>
             </li>
