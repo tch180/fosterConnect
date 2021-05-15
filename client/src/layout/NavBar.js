@@ -1,6 +1,14 @@
 import React, {useContext,Fragment,useEffect} from "react";
 import logo from '../assets/Foster ConnectLOGO.png'
 import AuthContext from '../context/Auth/authContext'
+// ICONS 
+import {IoHomeSharp} from 'react-icons/io5'
+import {IoMdLogIn,IoIosListBox,IoMdInformationCircleOutline,IoIosBook,IoIosLink,IoIosStar,IoMdLogOut} from 'react-icons/io'
+
+
+
+
+
 function NavBar(props) {
   const authContext = useContext(AuthContext)
   const {isAuthenticated,logout} = authContext
@@ -20,17 +28,17 @@ useEffect(()=>{
     <Fragment>
       <li className="nav-item">
         <a className="nav-link" href="/profile">
-          Profile
+        <IoIosBook style={{fontSize:'22px', color:'teal'}}/>  Profile
         </a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="/mentors">
-          Mentoring
+        <IoIosLink style={{fontSize:'22px', color:'teal'}}/>  Mentoring
         </a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="/homerating">
-          Home Rating
+         <IoIosStar style={{fontSize:'22px', color:'teal'}}/> Home Rating
         </a>
       </li>
       <li className="nav-item">
@@ -40,7 +48,7 @@ useEffect(()=>{
       </li>
       <li className="nav-item">
         <a className="nav-link" href="#!" onClick={onLogout}>
-          Logout
+         <IoMdLogOut style={{fontSize:'22px', color:'teal'}}/> Logout
         </a>
       </li>
     </Fragment>
@@ -50,17 +58,17 @@ useEffect(()=>{
     <Fragment>
       <li className="nav-item">
         <a className="nav-link" href="/login">
-          Login
+        <IoMdLogIn style={{fontSize:'22px', color:'teal'}}/>  Login
         </a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="/signup">
-          Signup
+        <IoIosListBox  style={{fontSize:'22px', color:'teal'}}/>  Signup
         </a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="/About">
-          About Us 
+         <IoMdInformationCircleOutline style={{fontSize:'22px', color:'teal'}}/> About Us 
         </a>
       </li>
     </Fragment>
@@ -108,7 +116,7 @@ useEffect(()=>{
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">Home</a>
+                <a className="nav-link active" aria-current="page" href="/"> <IoHomeSharp style={{fontSize:'22px', margin:'auto',color:'teal'}}/> Home</a>
               </li>
               {isAuthenticated ? authorizedLinks : notAuthorizedLinks}
              
