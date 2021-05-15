@@ -20,6 +20,7 @@ import  Alerts  from "./components/Alerts";
 
 import setAuthToken from "./utils/SetAuthToken";
 import PrivateRoute from "./routing/PrivateRoute";
+import AdminRoute from './routing/AdminRoute'
 
 import PostState from './context/post/PostState'; 
 
@@ -42,7 +43,8 @@ function App() {
                 <PrivateRoute exact path="/profile" component={ProfilePage} />
                 <PrivateRoute exact path="/homerating" component={HomeRating} />
                 <PrivateRoute exact path="/mentors" component={Mentors} />
-                <PrivateRoute exact path="/Admin" component={AdminPanel} />
+                <AdminRoute exact path="/Admin" component={Login} />
+                <AdminRoute exact path="/AdminView" component={AdminPanel} />
                 <Route exact path="/About" component={AboutUs} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={SignUp} />

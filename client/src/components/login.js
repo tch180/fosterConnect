@@ -12,7 +12,7 @@ function Login(props){
 
     useEffect(()=>{
         if (isAuthenticated){
-            props.history.push("/profile");
+            props.history.push("/profile"); // need to add way to go to admin view if admin is logged in. 
         }
         if (error === 'Invalid Creds'){
             setAlert(error, 'danger');
