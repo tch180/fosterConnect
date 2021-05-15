@@ -21,7 +21,7 @@ const onLogout = ()=>{
 
 
 useEffect(()=>{
-  authContext.loadUser();
+  //authContext.loadUser();
  //eslint-disable-next-line
 },[])
   const authorizedLinks = (

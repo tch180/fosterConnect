@@ -21,6 +21,8 @@ import  Alerts  from "./components/Alerts";
 import setAuthToken from "./utils/SetAuthToken";
 import PrivateRoute from "./routing/PrivateRoute";
 
+import PostState from './context/post/PostState'; 
+
 function App() {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -29,6 +31,7 @@ function App() {
   return (
     <AuthState>
       <AlertState>
+        <PostState>
         <Router>
           <Fragment>
             <Navbar />
@@ -48,6 +51,7 @@ function App() {
             <Footer />
           </Fragment>
         </Router>
+        </PostState>
       </AlertState>
     </AuthState>
   );
