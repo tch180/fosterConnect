@@ -1,6 +1,7 @@
 import React, {useContext,Fragment,useEffect} from "react";
 import logo from '../assets/Foster ConnectLOGO.png'
 import AuthContext from '../context/Auth/authContext'
+import {useHistory }from 'react-router-dom'
 // ICONS 
 import {IoHomeSharp} from 'react-icons/io5'
 import {IoMdLogIn,IoIosListBox,IoMdInformationCircleOutline,IoIosBook,IoIosLink,IoIosStar,IoMdLogOut} from 'react-icons/io'
@@ -10,13 +11,15 @@ import {IoMdLogIn,IoIosListBox,IoMdInformationCircleOutline,IoIosBook,IoIosLink,
 
 
 function NavBar(props) {
+  const history = useHistory();
+
   const authContext = useContext(AuthContext)
   const {isAuthenticated,logout} = authContext
 
 const onLogout = ()=>{
   logout(); 
   console.log('user is logged out')
-  props.push('/')
+ history.push('/')
 }
 
 
@@ -42,7 +45,7 @@ useEffect(()=>{
         </a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#!" onClick={onLogout}>
+        <a className="nav-link" onClick={onLogout}>
          <IoMdLogOut style={{fontSize:'22px', color:'teal'}}/> Logout
         </a>
       </li>

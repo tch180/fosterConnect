@@ -20,7 +20,7 @@ function Post() {
               <div key={post._id} className="col d-flex align-items-start">
                 <div>
                   <div>
-                    <h2>{post.postTitle.toUpperCase()}</h2>
+                    {post.postTitle.toUpperCase()}
                     <p>{post.postText}</p>
                   </div>
                 </div>
