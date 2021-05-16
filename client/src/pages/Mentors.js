@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useContext, useEffect } from 'react'
+import AuthContext from '../context/Auth/authContext'
+
 import mentor1 from "../assets/mentoring.jpg";
 import MentorCarousel from "../components/mentorCarousel";
 import MentorsCards from "../components/mentorsCards";
 
 function Mentors() {
+  const authContext = useContext(AuthContext)
+  //const {user,logout} = authContext
+ 
+  useEffect(()=>{
+    authContext.loadUser();
+   //eslint-disable-next-line
+  },[])
   return (
     <div>
       <div className="card " style={{ backgroundColor: "black" }}>

@@ -2,24 +2,28 @@ import React, { useState, useContext, useEffect, Fragment } from "react";
 import AuthContext from "../context/Auth/authContext"
 import AlertContext from '../context/alert/alertContext'
 import logo from '../assets/Foster ConnectLOGO.png'
+import AdminContext from '../context/Admin/adminContext'
+import authContext from "../context/Auth/authContext";
 
-function Login(props){
-    const authContext = useContext(AuthContext); 
+function AdminLogin(props){
+   
     const alertContext = useContext(AlertContext);
+    const adminContext = useContext(AdminContext); 
+    const {isAdmin,checkForAdminUserAndLogin,isAuthenticated} = adminContext; 
     const { setAlert } = alertContext;
-
-    const { login, error, clearErrors, isAuthenticated} = authContext
+ const { clearErrors,error} = authContext
+ 
 
     useEffect(()=>{
-        if (isAuthenticated){
+        if (isAuthenticated && isAdmin){
             props.history.push("/AdminView"); // need to add way to go to admin view if admin is logged in. 
         }
         if (error === 'Invalid Creds'){
             setAlert(error, 'danger');
             clearErrors();
         }
-            // eslint-disable-next-line
-    },[error,isAuthenticated,props.history])
+    // eslint-disable-next-line
+    },[error,isAdmin,props.history])
     const [user,setUser] = useState({
         email:'',
         password:'',
@@ -34,8 +38,8 @@ function Login(props){
         if (email==="" || password === ""){
             setAlert('Please fill in all fields', 'danger');
         } else {
-            login({email,password});
-            console.log('user logged in');
+            checkForAdminUserAndLogin({email,password});
+            console.log('admin user logged in');
         }
     }
 
@@ -83,4 +87,4 @@ function Login(props){
     )
 }
 
-export default Login
+export default AdminLogin

@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import AuthState from "./context/Auth/AuthState";
 import AlertState from "./context/alert/AlertState";
+import AdminState from './context/Admin/AdminState'; 
+
+
 
 import Navbar from "../src/layout/NavBar";
 import Footer from "./layout/Footer";
@@ -21,7 +24,7 @@ import AdminLogin from './components/AdminLogin'
 
 import setAuthToken from "./utils/SetAuthToken";
 import PrivateRoute from "./routing/PrivateRoute";
-import AdminRoute from './routing/AdminRoute'
+import AdminPrivateRoute from './routing/AdminRoute'
 
 import PostState from './context/post/PostState'; 
 
@@ -32,6 +35,7 @@ function App() {
 
   return (
     <AuthState>
+      <AdminState>
       <AlertState>
         <PostState>
         <Router>
@@ -44,8 +48,8 @@ function App() {
                 <PrivateRoute exact path="/profile" component={ProfilePage} />
                 <PrivateRoute exact path="/homerating" component={HomeRating} />
                 <PrivateRoute exact path="/mentors" component={Mentors} />
-                <AdminRoute exact path="/Admin" component={AdminLogin} />
-                <AdminRoute exact path="/AdminView" component={AdminPanel} />
+                <Route exact path="/Admin" component={AdminLogin} />
+                <AdminPrivateRoute exact path="/AdminView" component={AdminPanel} />
                 <Route exact path="/About" component={AboutUs} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={SignUp} />
@@ -56,6 +60,7 @@ function App() {
         </Router>
         </PostState>
       </AlertState>
+      </AdminState>
     </AuthState>
   );
 }

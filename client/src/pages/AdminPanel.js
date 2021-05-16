@@ -1,15 +1,18 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext, useEffect } from "react";
+import AdminContext from "../context/Admin/adminContext";
 import AuthContext from "../context/Auth/authContext";
 
  
 
 function AdminPanel(props) {
-  const authContext = useContext(AuthContext);
-  const { user, logout } = authContext;
+  const adminContext = useContext(AdminContext);
+  const { user, logout} = adminContext;
+  
 
   useEffect(() => {
-    authContext.loadUser();
+    adminContext.loadAdminUser()
+    console.log("loading admin user")
     //eslint-disable-next-line
   }, []);
 
