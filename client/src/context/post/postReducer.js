@@ -24,6 +24,11 @@ export default (state, action) => {
       ...state,
       loading: false, 
     }  
+    case POST_ERROR: 
+    return {
+      ...state, 
+      error: action.payload,
+    };
     default:
       return state;
   }
