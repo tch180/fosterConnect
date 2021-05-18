@@ -38,6 +38,11 @@ const ProfileSidebar = (props) => {
             </li>
             <li>
               <a href="#" className="nav-link text-white">
+                New Post 
+              </a>
+            </li>
+            <li>
+              <a href="#" className="nav-link text-white">
                 View Mentors
               </a>
             </li>

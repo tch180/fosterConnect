@@ -2,10 +2,13 @@
 import React, { useContext, useEffect } from "react";
 import AdminContext from "../context/Admin/adminContext";
 import AuthContext from "../context/Auth/authContext";
+import {useHistory }from 'react-router-dom'
 
  
 
 function AdminPanel(props) {
+  const history = useHistory();
+
   const adminContext = useContext(AdminContext);
   const { user, logout} = adminContext;
   
@@ -19,7 +22,7 @@ function AdminPanel(props) {
   const onLogout = () => {
     logout();
     console.log("user is logged out");
-    props.push("/");
+    history.push("/");
   };
   return (
     <div style={{ width: "8vw" }} id="sidebar">
