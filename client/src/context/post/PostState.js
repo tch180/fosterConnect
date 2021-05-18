@@ -50,6 +50,7 @@ const PostState = (props) => {
     } catch (error) {
       dispatch({ type: POST_ERROR, payload: error.response.msg });
     }
+    getUsersPost()
   };
 
   return (
