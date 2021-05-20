@@ -23,8 +23,7 @@ import setAuthToken from "../../utils/SetAuthToken";
 //import User from "../../../../models/User";
 
 const AdminState = (props) => {
-  const initialState = {
-    user: null, 
+  const initialState = { 
     isAdmin: null,
     token: localStorage.getItem("token"),
     loading: true,
@@ -150,6 +149,8 @@ const AdminState = (props) => {
   //   }
   // };
 // NEED ERROR STATE
+
+
   const logout = () => dispatch({ type: ADMIN_LOGOUT });
   return (
     <adminContext.Provider
