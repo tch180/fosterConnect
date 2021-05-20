@@ -25,12 +25,13 @@ const NewPost = () => {
    console.log('strating to submit post')
    e.preventDefault()
    addUserPost(newPost)
+   
  }
 
  
 
   return (
-    <form className=' mx-2 mb-5 ' onSubmit={onSubmit}>
+    <form id="newPostForm" className=' mx-2 mb-5 ' onSubmit={onSubmit}>
       <div className="form-floating mb-3">
         <input
           type="text"

@@ -24,6 +24,7 @@ import setAuthToken from "../../utils/SetAuthToken";
 
 const AdminState = (props) => {
   const initialState = {
+    user: null, 
     isAdmin: null,
     token: localStorage.getItem("token"),
     loading: true,
@@ -61,24 +62,93 @@ const AdminState = (props) => {
    } catch (error) {
     dispatch({ type: AUTH_ERROR})
    }
- 
- 
  }
-  const checkForAdminUserAndLogin = async (formData ) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
+
+ const getAllUsers = async () =>{
     try {
-        const response = await axios.post("/api/auth", formData, config);
-        console.log(response, ' response')
-        dispatch({ type: ADMIN_LOGIN_SUCCESS, payload: response.data }); 
-        loadAdminUser()  
+      const res = await axios.get("/api/admin/users"); 
+      dispatch({type: GET_ALL_USERS, payload: res.data}) 
     } catch (error) {
-      dispatch({ type: ADMIN_LOGIN_FAIL, payload: error.response.data.msg });
+      dispatch({ type: ADMIN_ERROR,payload: error.response.msg})
     }
-  };
+ }
+
+ const getAllUsersPost = async () =>{ 
+   try {
+     const res = await axios.get("/api/admin/post")
+     dispatch({type: GET_ALL_USERS_POST, payload: res.data})
+   } catch (error) {
+     dispatch({ type: ADMIN_ERROR,payload: error.response.msg})
+   }
+ }
+
+ const getOneUserById = async (id) => { 
+  try {
+    const res = await axios.get(`/api/admin/users/${id}`)
+    dispatch({ type: GET_ONE_USER_BY_ID, payload: res.data})
+  } catch (error) {
+    dispatch({type: ADMIN_ERROR,payload: error.response.msg})
+  }
+ }
+
+ const getOnePostById = async (id) => {
+   try {
+     const res = await axios.get(`/api/admin/post/${id}`)
+     dispatch({ type: GET_ONE_POST_BY_ID, payload: res.data})
+   } catch (error) {
+     dispatch({ADMIN_ERROR,payload: error.response.msg})
+   }
+ }
+
+ const deleteOneUsersPost = async (id)=>{ 
+   try {
+     await axios.delete(`/api/admin/post/${id}`)
+     dispatch({ type: DELETE_A_USERS_POST, payload: id })
+   } catch (error) {
+     dispatch({ ADMIN_ERROR,payload: error.response.msg})
+   }
+ }
+
+ const updateUser = async(user)=>{ 
+   const config = { 
+     headers: { 
+       'content-type': 'application/json',
+     },
+   };
+   try {
+     const res = await axios.put(`/api/admin/users/${user._id}`, user, config); 
+     dispatch({ type: UPDATE_A_USER, payload: res.data})
+   } catch (error) {
+     dispatch({ type: ADMIN_ERROR, payload: error.response.msg})
+   }
+ }; 
+
+ const deleteUser = async (id) =>{
+   try {
+     await axios.delete(`/api/admin/users/${id}`); 
+     dispatch({ type: DELETE_A_USER, payload: id})
+   } catch (error) {
+     dispatch({type: ADMIN_ERROR, payload: error.response.msg})
+   }
+ }
+
+
+  // TESTING ROUTE. 
+  // const checkForAdminUserAndLogin = async (formData ) => {
+  //   const config = {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   };
+  //   try {
+  //       const response = await axios.post("/api/auth", formData, config);
+  //       console.log(response, ' response')
+  //       dispatch({ type: ADMIN_LOGIN_SUCCESS, payload: response.data }); 
+  //       loadAdminUser()  
+  //   } catch (error) {
+  //     dispatch({ type: ADMIN_LOGIN_FAIL, payload: error.response.data.msg });
+  //   }
+  // };
 // NEED ERROR STATE
   const logout = () => dispatch({ type: ADMIN_LOGOUT });
   return (
@@ -89,9 +159,17 @@ const AdminState = (props) => {
         user: state.user,
         isAuthenticated: state.isAuthenticated, 
         loading: state.loading, 
-        checkForAdminUserAndLogin,
         loadAdminUser, 
-        logout
+        logout, 
+        getAllUsers, 
+        getAllUsersPost, 
+        getOneUserById,
+        getOnePostById,
+        deleteOneUsersPost,
+        updateUser,
+        deleteUser
+
+
     }}>
     {props.children}
     
