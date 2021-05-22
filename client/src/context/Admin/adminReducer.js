@@ -51,6 +51,42 @@ export default (state, action) => {
         ...state,
         isAdmin: true,
       };
+    case ADMIN_ERROR: 
+    case GET_ALL_USERS_POST: 
+    return { 
+      ...state, 
+      post: action.payload
+    }
+    case GET_ALL_USERS: 
+    return { 
+      ...state, 
+      user: action.payload
+    }
+    case GET_ONE_POST_BY_ID: 
+    return { 
+      ...state, 
+      post: action.payload
+    }
+    case GET_ONE_USER_BY_ID: 
+    return { 
+      ...state, 
+      user: action.payload
+    }
+    case UPDATE_A_USER: 
+    return { 
+      ...state, 
+      user: action.payload, 
+    }
+    case DELETE_A_USER: 
+    return { 
+      ...state, 
+      loading: false,
+    }
+    case DELETE_A_USERS_POST: 
+    return { 
+      ...state, 
+      loading: false,
+    }
 
     default:
       return state;
