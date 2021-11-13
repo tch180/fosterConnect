@@ -41,12 +41,12 @@ useEffect(()=>{
       </li>
       <li className="nav-item">
         <a className="nav-link" href="/homerating">
-         <IoIosStar style={{fontSize:'22px', color:'teal'}}/> Home Rating
+        <IoIosStar style={{fontSize:'22px', color:'teal'}}/> Home Rating
         </a>
       </li>
       <li className="nav-item">
         <a className="nav-link" onClick={onLogout}>
-         <IoMdLogOut style={{fontSize:'22px', color:'teal'}}/> Logout
+        <IoMdLogOut style={{fontSize:'22px', color:'teal'}}/> Logout
         </a>
       </li>
     </Fragment>
@@ -66,7 +66,7 @@ useEffect(()=>{
       </li>
       <li className="nav-item">
         <a className="nav-link" href="/About">
-         <IoMdInformationCircleOutline style={{fontSize:'22px', color:'teal'}}/> About Us 
+        <IoMdInformationCircleOutline style={{fontSize:'22px', color:'teal'}}/> About Us 
         </a>
       </li>
     </Fragment>
@@ -117,8 +117,6 @@ useEffect(()=>{
                 <a className="nav-link active" aria-current="page" href="/"> <IoHomeSharp style={{fontSize:'22px', margin:'auto',color:'teal'}}/> Home</a>
               </li>
               {isAuthenticated ? authorizedLinks : notAuthorizedLinks}
-             
-            
             </ul>
             <span className="navbar-text">
               Making Connections that Matter

@@ -1,9 +1,11 @@
-import React, { Fragment } from "react";
+import React, { Fragment  } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import AuthState from "./context/Auth/AuthState";
 import AlertState from "./context/alert/AlertState";
 import AdminState from './context/Admin/AdminState'; 
+
+
 
 
 
@@ -24,14 +26,18 @@ import AdminLogin from './components/AdminLogin'
 
 import setAuthToken from "./utils/SetAuthToken";
 import PrivateRoute from "./routing/PrivateRoute";
-import AdminPrivateRoute from './routing/AdminRoute'
+import AdminPrivateRoute from './routing/AdminRoute';
+import DashboardRoute from "./routing/DashboardRoute";
+
 
 import PostState from './context/post/PostState'; 
+
 
 function App() {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
+  
 
   return (
     <AuthState>
@@ -45,7 +51,7 @@ function App() {
               <Alerts />
               <Switch>
                 <Route exact path="/" component={LandingPage} />
-                <PrivateRoute exact path="/profile" component={ProfilePage} />
+                <DashboardRoute exact path="/profile" component={ProfilePage} />
                 <PrivateRoute exact path="/homerating" component={HomeRating} />
                 <PrivateRoute exact path="/mentors" component={Mentors} />
                 <Route exact path="/Admin" component={AdminLogin} />

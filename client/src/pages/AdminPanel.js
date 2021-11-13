@@ -10,11 +10,13 @@ function AdminPanel(props) {
   const history = useHistory();
 
   const adminContext = useContext(AdminContext);
-  const { user, logout} = adminContext;
+  const { user, logout, getAllUsers,getAllUsersPost,getOneUserById,getOnePostById,deleteOneUsersPost,updateUser,deleteUser } = adminContext;
   
 
   useEffect(() => {
     adminContext.loadAdminUser()
+    getAllUsers()
+
     console.log("loading admin user")
     //eslint-disable-next-line
   }, []);
@@ -112,8 +114,7 @@ function AdminPanel(props) {
           </ul>
         </div>
       </div>
-      <h2>Hello can you see me </h2>
-
+      
 
 
 

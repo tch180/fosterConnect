@@ -1,14 +1,28 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext, useEffect } from "react";
 import AuthContext from "../context/Auth/authContext";
-const ProfileSidebar = (props) => {
+import { Link, Route, useParams, useRouteMatch } from "react-router-dom";
+
+
+
+
+
+
+const ProfileSidebar = (props, changeView) => {
   const authContext = useContext(AuthContext);
   const { user, logout } = authContext;
 
   useEffect(() => {
-    authContext.loadUser();
+    // authContext.loadUser();
     //eslint-disable-next-line
   }, []);
+// console.log(changeView,"ChangeView ");
+
+function handleClick (e) {
+props.changeView(e);
+console.log("handling CLick", e);
+}
+
 
   const onLogout = () => {
     logout();
@@ -32,12 +46,12 @@ const ProfileSidebar = (props) => {
           <hr />
           <ul className="nav nav-pills flex-column mb-auto">
             <li>
-              <a href="#" className="nav-link text-white">
+              <Link to="/ViewPost" className="nav-link text-white" > 
                 View Post
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="nav-link text-white">
+              <a href="/NewPost" className="nav-link text-white" >
                 New Post 
               </a>
             </li>

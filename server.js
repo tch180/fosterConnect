@@ -1,8 +1,5 @@
-const express = require('express');
-const connectDB = require('./config/db');
-
-
-
+const express = require("express");
+const connectDB = require("./config/db");
 
 //const path = require('path');
 
@@ -10,27 +7,19 @@ const connectDB = require('./config/db');
 const app = express();
 
 // Connect DB
-connectDB()
-
-
-
-
-
-
-
-
+connectDB();
 
 //init middleware
 app.use(express.json({ extended: false }));
 
 //ROUTES
-app.use('/api/users', require('./routes/users'))
-app.use('/api/auth', require('./routes/auth'))
-app.use('/api/admin/users', require('./routes/adminRoutes/Users'))
-app.use('/api/admin/post', require('./routes/adminRoutes/Posts'))
+app.use("/api/users", require("./routes/users"));
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/admin/users", require("./routes/adminRoutes/Users"));
+app.use("/api/admin/post", require("./routes/adminRoutes/Posts"));
 // app.use('/api/admin/checkRole', require('./routes/adminRoutes/adminCheck'))
 
-app.use('/api/posts', require('./routes/posts'))
+app.use("/api/posts", require("./routes/posts"));
 
 //PORT
 const PORT = process.env.PORT || 8080;
