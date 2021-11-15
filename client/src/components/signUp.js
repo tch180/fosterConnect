@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, Fragment } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import logo from "../assets/Foster ConnectLOGO.png";
 
 import AuthContext from "../context/Auth/authContext";

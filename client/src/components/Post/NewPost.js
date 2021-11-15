@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, {  useContext, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import PostContext from "../../context/post/postContext";
 

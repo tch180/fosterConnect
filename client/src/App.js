@@ -1,4 +1,4 @@
-import React, { Fragment, useContext  } from "react";
+import React, { Fragment  } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AuthState from "./context/Auth/AuthState";
 import AlertState from "./context/alert/AlertState";
@@ -30,13 +30,11 @@ import DashboardRoute from "./routing/DashboardRoute";
 
 
 import PostState from './context/post/PostState'; 
-import Spinner from "./layout/Spinner";
-import AuthContext from '../src/context/Auth/authContext';
+
 
 
 function App() {
-  // const authContext = useContext(AuthContext);
-  // const {loading} = authContext;
+  
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }

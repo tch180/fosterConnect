@@ -1,9 +1,9 @@
-import React, { Fragment,useContext } from 'react'
+import React from 'react'
 import AdminPanel from '../pages/AdminPanel'
-import AdminContext from "../context/Admin/adminContext";
+// import AdminContext from "../context/Admin/adminContext";
 
 function Admin() {
-    const adminContext= useContext(AdminContext)
+    // const adminContext= useContext(AdminContext)
     return (
         <div style={{ color: "teal", display: "flex", flexDirection: "row" }}>
             <AdminPanel/>
