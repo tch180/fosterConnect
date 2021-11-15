@@ -133,21 +133,21 @@ const AdminState = (props) => {
 
 
   // TESTING ROUTE. 
-  // const checkForAdminUserAndLogin = async (formData ) => {
-  //   const config = {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   };
-  //   try {
-  //       const response = await axios.post("/api/auth", formData, config);
-  //       console.log(response, ' response')
-  //       dispatch({ type: ADMIN_LOGIN_SUCCESS, payload: response.data }); 
-  //       loadAdminUser()  
-  //   } catch (error) {
-  //     dispatch({ type: ADMIN_LOGIN_FAIL, payload: error.response.data.msg });
-  //   }
-  // };
+  const checkForAdminUserAndLogin = async (formData ) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+        const response = await axios.post("/api/auth", formData, config);
+        // console.log(response, ' response')
+        dispatch({ type: ADMIN_LOGIN_SUCCESS, payload: response.data }); 
+        loadAdminUser()  
+    } catch (error) {
+      dispatch({ type: ADMIN_LOGIN_FAIL, payload: error.response.data.msg });
+    }
+  };
 // NEED ERROR STATE
 
 
@@ -160,6 +160,7 @@ const AdminState = (props) => {
         user: state.user,
         isAuthenticated: state.isAuthenticated, 
         loading: state.loading, 
+        checkForAdminUserAndLogin,
         loadAdminUser, 
         logout, 
         getAllUsers, 
@@ -169,8 +170,6 @@ const AdminState = (props) => {
         deleteOneUsersPost,
         updateUser,
         deleteUser
-
-
     }}>
     {props.children}
     

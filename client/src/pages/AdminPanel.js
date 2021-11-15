@@ -2,22 +2,29 @@
 import React, { useContext, useEffect } from "react";
 import AdminContext from "../context/Admin/adminContext";
 import AuthContext from "../context/Auth/authContext";
-import {useHistory }from 'react-router-dom'
-
- 
+import { useHistory } from "react-router-dom";
 
 function AdminPanel(props) {
   const history = useHistory();
 
   const adminContext = useContext(AdminContext);
-  const { user, logout, getAllUsers,getAllUsersPost,getOneUserById,getOnePostById,deleteOneUsersPost,updateUser,deleteUser } = adminContext;
-  
+  const {
+    user,
+    logout,
+    getAllUsers,
+    getAllUsersPost,
+    getOneUserById,
+    getOnePostById,
+    deleteOneUsersPost,
+    updateUser,
+    deleteUser,
+  } = adminContext;
 
   useEffect(() => {
-    adminContext.loadAdminUser()
-    getAllUsers()
+    adminContext.loadAdminUser();
+    getAllUsers();
 
-    console.log("loading admin user")
+    console.log("loading admin user");
     //eslint-disable-next-line
   }, []);
 
@@ -42,17 +49,17 @@ function AdminPanel(props) {
         <ul className="nav nav-pills flex-column mb-auto">
           <li className="nav-item">
             <a href="/" className="nav-link text-white ">
-              View Users 
+              View Users
             </a>
           </li>
           <li>
             <a href="#" className="nav-link text-white">
-              View Post 
+              View Post
             </a>
           </li>
           <li>
             <a href="#" className="nav-link text-white">
-              View Mentors 
+              View Mentors
             </a>
           </li>
           <li>
@@ -62,7 +69,7 @@ function AdminPanel(props) {
           </li>
           <li>
             <a href="#" className="nav-link text-white">
-              Mods 
+              Mods
             </a>
           </li>
         </ul>
@@ -82,7 +89,7 @@ function AdminPanel(props) {
               height="62"
               className="rounded-circle me-2"
             />
-             <strong>{user && user.firstName}</strong>
+            <strong>{user && user.firstName}</strong>
           </a>
           <ul
             className="dropdown-menu dropdown-menu-dark text-small shadow"
@@ -114,14 +121,6 @@ function AdminPanel(props) {
           </ul>
         </div>
       </div>
-      
-
-
-
-
-
-
-
     </div>
   );
 }

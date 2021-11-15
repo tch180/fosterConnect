@@ -7,6 +7,7 @@ import {
     LOGIN_FAIL,
     LOGOUT,
     CLEAR_ERRORS,
+    LOGINLOADING
   } from '../types.js';
   
   // eslint-disable-next-line import/no-anonymous-default-export
@@ -19,6 +20,7 @@ import {
           loading: false,
           user: action.payload,
         };
+        
       case REGISTER_SUCCESS:
       case LOGIN_SUCCESS:
         localStorage.setItem('token', action.payload.token);
@@ -28,6 +30,11 @@ import {
           isAuthenticated: true,
           loading: false,
         };
+        case LOGINLOADING:
+          return {
+            ...state,
+            loading:true
+          }
       case REGISTER_FAIL:
       case AUTH_ERROR:
       case LOGIN_FAIL:

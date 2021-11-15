@@ -2,13 +2,14 @@ import React, { useState, useContext, useEffect, Fragment } from "react";
 import AuthContext from "../context/Auth/authContext"
 import AlertContext from '../context/alert/alertContext'
 import logo from '../assets/Foster ConnectLOGO.png'
+import Spinner from "../layout/Spinner";
 
 function Login(props){
     const authContext = useContext(AuthContext); 
     const alertContext = useContext(AlertContext);
     const { setAlert } = alertContext;
 
-    const { login, error, clearErrors, isAuthenticated} = authContext
+    const { login, error, clearErrors, isAuthenticated,loginLoading,loading } = authContext
 
     useEffect(()=>{
         if (isAuthenticated){
@@ -18,14 +19,22 @@ function Login(props){
             setAlert(error, 'danger');
             clearErrors();
         }
+        
             // eslint-disable-next-line
     },[error,isAuthenticated,props.history])
     const [user,setUser] = useState({
         email:'',
         password:'',
     });
+    useEffect(() => {
+        console.log(loading, 'login loading')
+       
+      
+    }, [loading])
+ 
 
-    const { email, password} = user; 
+
+const { email, password} = user; 
 
     const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value});
 
@@ -34,16 +43,20 @@ function Login(props){
         if (email==="" || password === ""){
             setAlert('Please fill in all fields', 'danger');
         } else {
+            loginLoading()
             login({email,password});
-            console.log('user logged in');
+            console.log('user logged in');  
         }
     }
-
+    
 
 
 
     return (
         <div>
+            {loading ? <Spinner/> :(
+
+            
             <form onSubmit={onSubmit}
                 style={{
                 width: '22rem',
@@ -79,7 +92,9 @@ function Login(props){
                 <button className="w-100 btn btn-lg btn-primary mt-4" type="submit">Sign in</button>
 
             </form>
+            )}
         </div>
+        
     )
 }
 

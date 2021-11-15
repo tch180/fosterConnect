@@ -1,6 +1,5 @@
-import React, { Fragment  } from "react";
+import React, { Fragment, useContext  } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
 import AuthState from "./context/Auth/AuthState";
 import AlertState from "./context/alert/AlertState";
 import AdminState from './context/Admin/AdminState'; 
@@ -18,7 +17,7 @@ import ProfilePage from "../src/pages/Profile";
 import HomeRating from "./pages/HomeRating";
 import Mentors from "./pages/Mentors";
 import AboutUs from "./pages/AboutUs";
-import AdminPanel from "./pages/AdminPanel";
+import Admin from "./components/Admin";
 import Login from "./components/login";
 import SignUp from "./components/signUp";
 import  Alerts  from "./components/Alerts";
@@ -31,16 +30,20 @@ import DashboardRoute from "./routing/DashboardRoute";
 
 
 import PostState from './context/post/PostState'; 
+import Spinner from "./layout/Spinner";
+import AuthContext from '../src/context/Auth/authContext';
 
 
 function App() {
+  // const authContext = useContext(AuthContext);
+  // const {loading} = authContext;
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
   
-
   return (
     <AuthState>
+    
       <AdminState>
       <AlertState>
         <PostState>
@@ -55,7 +58,7 @@ function App() {
                 <PrivateRoute exact path="/homerating" component={HomeRating} />
                 <PrivateRoute exact path="/mentors" component={Mentors} />
                 <Route exact path="/Admin" component={AdminLogin} />
-                <AdminPrivateRoute exact path="/AdminView" component={AdminPanel} />
+                <AdminPrivateRoute exact path="/AdminView" component={Admin} />
                 <Route exact path="/About" component={AboutUs} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={SignUp} />

@@ -2,6 +2,7 @@ import React, { useEffect, Fragment, useContext } from "react";
 import PostContext from "../../context/post/postContext";
 import NewPost from './NewPost'
 import PostItem from "./PostItem";
+import Spinner from '../../layout/Spinner'
 
 function Post() {
   const postContext = useContext(PostContext);
@@ -12,12 +13,16 @@ function Post() {
     //eslint-disable-next-line
   }, []);
 
- 
-
+ if (loading) {
+   return (
+     <Fragment>
+       <Spinner/>
+     </Fragment>
+   )
+   }
   return (
     <Fragment>
       <div>
-        
         <div className="container px-4 py-5" id="hanging-icons">
           <h2 className="pb-2 border-bottom">Your Post</h2>
           <div className="row g-4 py-5 row-cols-1 row-cols-lg-3">

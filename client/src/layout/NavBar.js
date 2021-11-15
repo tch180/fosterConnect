@@ -45,7 +45,7 @@ useEffect(()=>{
         </a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" onClick={onLogout}>
+        <a className="nav-link" href="/" onClick={onLogout}>
         <IoMdLogOut style={{fontSize:'22px', color:'teal'}}/> Logout
         </a>
       </li>

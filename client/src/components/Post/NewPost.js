@@ -22,7 +22,7 @@ const NewPost = () => {
     setPost({ ...newPost,[e.target.name]: e.target.value,});
 
  const onSubmit = (e) =>{
-   console.log('strating to submit post')
+   console.log('starting to submit post')
    e.preventDefault()
    addUserPost(newPost)
    
