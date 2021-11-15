@@ -52,7 +52,7 @@ function App() {
               <Alerts />
               <Switch>
                 <Route exact path="/" component={LandingPage} />
-                <DashboardRoute exact path="/profile" component={ProfilePage} />
+                <DashboardRoute  path="/profile" component={ProfilePage} />
                 <PrivateRoute exact path="/homerating" component={HomeRating} />
                 <PrivateRoute exact path="/mentors" component={Mentors} />
                 <Route exact path="/Admin" component={AdminLogin} />
