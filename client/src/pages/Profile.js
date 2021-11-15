@@ -26,9 +26,19 @@ function Profile(props) {
 
   return (
     <div style={{ color: "teal", display: "flex", flexDirection: "row" }}>
-      <ProfileSidebar  />
-      <Post/>
-      
+      <ProfileSidebar />
+      <Route exact path={path}>
+        <Post />
+      </Route>
+      <Route path={`${path}/ViewPost`}>
+        <Post />
+      </Route>
+      <Route path={`${path}/NewPost`}>
+        <NewPost />
+      </Route>
+      <Route path={`${path}/Mentors`}>
+        <Mentors />
+      </Route>
     </div>
   );
 }
