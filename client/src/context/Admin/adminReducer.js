@@ -60,7 +60,7 @@ export default (state, action) => {
     case GET_ALL_USERS: 
     return { 
       ...state, 
-      user: action.payload
+      users: action.payload
     }
     case GET_ONE_POST_BY_ID: 
     return { 

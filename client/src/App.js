@@ -17,11 +17,11 @@ import ProfilePage from "../src/pages/Profile";
 import HomeRating from "./pages/HomeRating";
 import Mentors from "./pages/Mentors";
 import AboutUs from "./pages/AboutUs";
-import Admin from "./components/Admin";
+import Admin from "./components/Admin/Admin";
 import Login from "./components/login";
 import SignUp from "./components/signUp";
 import  Alerts  from "./components/Alerts";
-import AdminLogin from './components/AdminLogin'
+import AdminLogin from './components/Admin/AdminLogin'
 
 import setAuthToken from "./utils/SetAuthToken";
 import PrivateRoute from "./routing/PrivateRoute";
@@ -56,7 +56,7 @@ function App() {
                 <PrivateRoute exact path="/homerating" component={HomeRating} />
                 <PrivateRoute exact path="/mentors" component={Mentors} />
                 <Route exact path="/Admin" component={AdminLogin} />
-                <AdminPrivateRoute exact path="/AdminView" component={Admin} />
+                <AdminPrivateRoute  path="/AdminView" component={Admin} />
                 <Route exact path="/About" component={AboutUs} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={SignUp} />

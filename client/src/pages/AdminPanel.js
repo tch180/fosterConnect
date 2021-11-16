@@ -2,7 +2,7 @@
 import React, { useContext, useEffect } from "react";
 import AdminContext from "../context/Admin/adminContext";
 import AuthContext from "../context/Auth/authContext";
-import { useHistory } from "react-router-dom";
+import { useHistory,Link } from "react-router-dom";
 
 function AdminPanel(props) {
   const history = useHistory();
@@ -48,9 +48,9 @@ function AdminPanel(props) {
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">
           <li className="nav-item">
-            <a href="/" className="nav-link text-white ">
+            <Link to="/AdminView/ViewUsers" className="nav-link text-white ">
               View Users
-            </a>
+            </Link>
           </li>
           <li>
             <a href="#" className="nav-link text-white">

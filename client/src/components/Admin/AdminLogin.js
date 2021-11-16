@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 // import AuthContext from "../context/Auth/authContext";
-import AlertContext from "../context/alert/alertContext";
-import logo from "../assets/Foster ConnectLOGO.png";
-import AdminContext from "../context/Admin/adminContext";
-import authContext from "../context/Auth/authContext";
+import AlertContext from "../../context/alert/alertContext";
+import logo from "../../assets/Foster ConnectLOGO.png";
+import AdminContext from "../../context/Admin/adminContext";
+import authContext from "../../context/Auth/authContext";
 
 function AdminLogin(props) {
   const alertContext = useContext(AlertContext);

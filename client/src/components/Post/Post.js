@@ -1,25 +1,25 @@
 import React, { useEffect, Fragment, useContext } from "react";
 import PostContext from "../../context/post/postContext";
-import NewPost from './NewPost'
+import NewPost from "./NewPost";
 import PostItem from "./PostItem";
-import Spinner from '../../layout/Spinner'
+import Spinner from "../../layout/Spinner";
 
 function Post() {
   const postContext = useContext(PostContext);
-  const { getUsersPost, post,loading } = postContext;
- 
+  const { getUsersPost, post, loading } = postContext;
+
   useEffect(() => {
     getUsersPost();
     //eslint-disable-next-line
   }, []);
 
- if (loading) {
-   return (
-     <Fragment>
-       <Spinner/>
-     </Fragment>
-   )
-   }
+  if (loading) {
+    return (
+      <Fragment>
+        <Spinner />
+      </Fragment>
+    );
+  }
   return (
     <Fragment>
       <div>
@@ -28,12 +28,12 @@ function Post() {
           <div className="row g-4 py-5 row-cols-1 row-cols-lg-3">
             {post.map((post) => (
               <div key={post._id}>
-                  <PostItem post={post}/>
+                <PostItem post={post} />
               </div>
             ))}
           </div>
         </div>
-        <NewPost/>
+        <NewPost />
       </div>
     </Fragment>
   );

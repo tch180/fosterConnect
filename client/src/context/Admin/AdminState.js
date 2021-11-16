@@ -30,6 +30,7 @@ const AdminState = (props) => {
     user: null,
     error: null,
     isAuthenticated: null, 
+    users:[],
     
   };
 
@@ -160,6 +161,8 @@ const AdminState = (props) => {
         user: state.user,
         isAuthenticated: state.isAuthenticated, 
         loading: state.loading, 
+        users: state.users,
+        adminCheck,
         checkForAdminUserAndLogin,
         loadAdminUser, 
         logout, 

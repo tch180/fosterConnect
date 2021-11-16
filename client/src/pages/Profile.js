@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { Route, useRouteMatch } from "react-router-dom";
 
-import AuthContext from "../context/Auth/authContext";
 import ProfileSidebar from "../layout/ProfileSidebar";
 import Post from "../components/Post/Post";
 import NewPost from "../components/Post/NewPost";
