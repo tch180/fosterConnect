@@ -55,7 +55,7 @@ export default (state, action) => {
     case GET_ALL_USERS_POST: 
     return { 
       ...state, 
-      post: action.payload
+      posts: action.payload
     }
     case GET_ALL_USERS: 
     return { 
@@ -65,7 +65,7 @@ export default (state, action) => {
     case GET_ONE_POST_BY_ID: 
     return { 
       ...state, 
-      post: action.payload
+      posts: action.payload
     }
     case GET_ONE_USER_BY_ID: 
     return { 

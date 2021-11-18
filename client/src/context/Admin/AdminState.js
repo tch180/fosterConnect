@@ -31,6 +31,7 @@ const AdminState = (props) => {
     error: null,
     isAuthenticated: null, 
     users:[],
+    posts:[],
     
   };
 
@@ -107,6 +108,7 @@ const AdminState = (props) => {
    } catch (error) {
      dispatch({ ADMIN_ERROR,payload: error.response.msg})
    }
+   getAllUsersPost()
  }
 
  const updateUser = async(user)=>{ 
@@ -130,6 +132,7 @@ const AdminState = (props) => {
    } catch (error) {
      dispatch({type: ADMIN_ERROR, payload: error.response.msg})
    }
+   getAllUsers()
  }
 
 
@@ -162,6 +165,7 @@ const AdminState = (props) => {
         isAuthenticated: state.isAuthenticated, 
         loading: state.loading, 
         users: state.users,
+        posts: state.posts,
         adminCheck,
         checkForAdminUserAndLogin,
         loadAdminUser, 

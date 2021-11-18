@@ -12,7 +12,7 @@ router.get("/",auth,adminCheck,   async (req, res) => {
   console.log("getting the users");
   try {
     const getAllUsers = await User.find({ user: req.params.user });
-    console.log(getAllUsers, "----------getallusers");
+    // console.log(getAllUsers, "----------getallusers");
     res.json(getAllUsers);
   } catch (error) {
     console.error(error.message);

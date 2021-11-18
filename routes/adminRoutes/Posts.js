@@ -13,7 +13,7 @@ router.get("/",auth,adminCheck, async (req, res) => {
     console.log('success')
   try {
     
-    console.log("am I working");
+    // console.log("am I working");
     const getAllPost = await Post.find({ post: req.post });
     res.json(getAllPost);
   } catch (error) {

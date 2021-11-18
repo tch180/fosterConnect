@@ -27,28 +27,26 @@ function Users() {
     getAllUsers();
     // eslint-disable-next-line
   }, []);
-  if (loading) {
-    return (
-      <Fragment>
-        <Spinner />
-      </Fragment>
-    );
-  }
-  console.log(users, "users");
+
+  // console.log(users, "users");
   return (
-      <Fragment>
-    <div>
-      <div className="container px-4 py-5" id="hanging-icons">
-        <h2 className="pb-2 border-bottom">All Users</h2>
-        <div className="row g-4 py-5 row-cols-1 row-cols-lg-3">
-          {users.map((user) => (
-            <div key={user._id}>
-              <UserItem user={user} />
+    <Fragment>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div>
+          <div className="container px-4 py-5" id="hanging-icons">
+            <h2 className="pb-2 border-bottom">All Users</h2>
+            <div className="row g-4 py-5 row-cols-1 row-cols-lg-3">
+              {users.map((user) => (
+                <div key={user._id}>
+                  <UserItem user={user} />
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
-      </div>
-    </div>
+      )}
     </Fragment>
   );
 }

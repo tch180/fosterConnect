@@ -53,9 +53,9 @@ function AdminPanel(props) {
             </Link>
           </li>
           <li>
-            <a href="#" className="nav-link text-white">
+            <Link to="/AdminView/ViewPost" className="nav-link text-white">
               View Post
-            </a>
+            </Link>
           </li>
           <li>
             <a href="#" className="nav-link text-white">

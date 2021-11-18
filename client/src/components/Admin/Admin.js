@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Route, useRouteMatch } from "react-router-dom";
 
 import AdminPanel from "../../pages/AdminPanel";
-import Post from "../Post/Post";
+import Posts from "./Posts";
 import Users from "./Users";
 
 function Admin() {
@@ -18,8 +18,8 @@ function Admin() {
       <Route path={`${path}/ViewUsers`}>
       <Users />
       </Route>
-      <Route path={`${path}/NewPost`}>
-        
+      <Route path={`${path}/ViewPost`}>
+        <Posts/>
       </Route>
       <Route path={`${path}/Mentors`}>
        
