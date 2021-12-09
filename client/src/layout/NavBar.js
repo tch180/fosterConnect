@@ -1,6 +1,7 @@
 import React, {useContext,Fragment,useEffect} from "react";
 import logo from '../assets/Foster ConnectLOGO.png'
 import AuthContext from '../context/Auth/authContext'
+import AdminContext from '../context/Admin/adminContext'
 import {useHistory }from 'react-router-dom'
 // ICONS 
 import {IoHomeSharp} from 'react-icons/io5'
@@ -15,6 +16,8 @@ function NavBar(props) {
 
   const authContext = useContext(AuthContext)
   const {isAuthenticated,logout} = authContext
+  const adminContext = useContext(AdminContext)
+  const{isAdminAuthenticated} = adminContext
 
 const onLogout = ()=>{
   logout(); 
