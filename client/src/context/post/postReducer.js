@@ -5,9 +5,10 @@ import {
   DELETE_POST,
   POST_ERROR,
 } from "../types.js";
+import { useReducer } from "react";
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default (state, action) => {
+
+const postReducer = (state, action) => {
   switch (action.type) {
     case GET_POST:
       return {
@@ -33,3 +34,5 @@ export default (state, action) => {
       return state;
   }
 };
+
+export const usePostReducer = (state, action) => useReducer(postReducer, state, action);

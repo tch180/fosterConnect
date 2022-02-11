@@ -1,7 +1,5 @@
-import React, { useReducer } from "react";
 import axios from "axios";
-import PostContext from "./postContext";
-import postReducer from "./postReducer";
+
 
 //TYPES
 import {
@@ -12,23 +10,23 @@ import {
   POST_ERROR,
 } from "../types.js";
 
-const PostState = (props) => {
-  const initialState = {
+
+ export const initialState = {
     post: [],
     error: null,
-  };
+ }
 
-  const [state, dispatch] = useReducer(postReducer, initialState);
 
-  const getUsersPost = async () => {
+ export  const getUsersPost = async (id,dispatch) => {
     try {
       const res = await axios.get("/api/posts");
       dispatch({ type: GET_POST, payload: res.data });
     } catch (error) {
+      console.log("error-------------------", error);
       dispatch({ type: POST_ERROR, payload: error.response.msg });
     }
   };
-  const addUserPost = async (post) => {
+   export const addUserPost = async (post,dispatch) => {
     const config = {
       header: {
         "content-type": "application/json",
@@ -42,7 +40,7 @@ const PostState = (props) => {
     }
   };
 
-  const deleteUserPost = async (id) => {
+  export const deleteUserPost = async (id,dispatch) => {
     try {
       console.log("starting delete users post");
       await axios.delete(`/api/posts/${id}`);
@@ -53,19 +51,6 @@ const PostState = (props) => {
     getUsersPost()
   };
 
-  return (
-    <PostContext.Provider
-      value={{
-        post: state.post,
-        error: state.error,
-        getUsersPost,
-        addUserPost,
-        deleteUserPost,
-      }}
-    >
-      {props.children}
-    </PostContext.Provider>
-  );
-};
 
-export default PostState;
+
+

@@ -1,16 +1,22 @@
-import React, { useEffect, Fragment, useContext } from "react";
-import PostContext from "../../context/post/postContext";
+import React, { useEffect, Fragment,useState } from "react";
 import NewPost from "./NewPost";
 import PostItem from "./PostItem";
 import Spinner from "../../layout/Spinner";
+import { getUsersPost } from "../../context/post/PostState";
 
-function Post() {
-  const postContext = useContext(PostContext);
-  const { getUsersPost, post, loading } = postContext;
+const Post =()=> {
+const [post,setPost] = useState([]);
+const [loading,setLoading] = useState(false);
+
+// const getUsersPost = useCallback(async () => {
+//     // getUsersPost();
+//     setPost(post);
+//   }, [post]);
+  
+
 
   useEffect(() => {
     getUsersPost();
-    //eslint-disable-next-line
   }, []);
 
   if (loading) {
@@ -33,7 +39,7 @@ function Post() {
             ))}
           </div>
         </div>
-        <NewPost />
+        {/* <NewPost /> */}
       </div>
     </Fragment>
   );

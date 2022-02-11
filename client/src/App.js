@@ -24,7 +24,7 @@ import PrivateRoute from "./routing/PrivateRoute";
 import AdminPrivateRoute from "./routing/AdminRoute";
 import DashboardRoute from "./routing/DashboardRoute";
 
-import PostState from "./context/post/PostState";
+import PostProvider from "./context/post/postContext";
 
 function App() {
   if (localStorage.token) {
@@ -35,7 +35,7 @@ function App() {
     <AuthState>
       <AdminState>
         <AlertState>
-          <PostState>
+          <PostProvider>
             <Router>
               <Fragment>
                 <Navbar />
@@ -60,7 +60,7 @@ function App() {
                 <Footer />
               </Fragment>
             </Router>
-          </PostState>
+          </PostProvider>
         </AlertState>
       </AdminState>
     </AuthState>
