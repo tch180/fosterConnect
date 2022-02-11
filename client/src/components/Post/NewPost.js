@@ -1,22 +1,33 @@
-import React, {  useContext, useState } from "react";
+import React, {  useContext, useState,useCallback,useEffect } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import PostContext from "../../context/post/postContext";
 
 const NewPost = () => {
   const postContext = useContext(PostContext);
 
-  const { addUserPost, post  } = postContext;
-
-
-
-
-  
   const [newPost, setPost] = useState({
     postTitle: "",
     postText: "",
   });
 
-  const { postTitle, postText } = post;
+  const { postTitle, postText } = newPost;
+
+  const makeNewPost = useCallback(async () => {
+    const { postTitle, postText } = newPost;
+
+    const post = {
+      postTitle,
+      postText,
+    };
+
+    await postContext.addPost(post);
+  }, [newPost]);
+
+  useEffect(() => {
+    makeNewPost();
+  }, []);
+
+
 
   const onChange = (e) => 
     setPost({ ...newPost,[e.target.name]: e.target.value,});
@@ -24,7 +35,7 @@ const NewPost = () => {
  const onSubmit = (e) =>{
    console.log('starting to submit post')
    e.preventDefault()
-   addUserPost(newPost)
+  //  addUserPost(newPost)
    
  }
 
